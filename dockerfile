@@ -28,4 +28,4 @@ COPY --from=build /app/lib/backend/build /app/build
 EXPOSE 8080
 
 # Start the server
-CMD ["dart", "build/bin/main.dart", "--port", "8080", "--address", "0.0.0.0"]
+CMD ["dart", "build/bin/server.dart", "--port", "8080", "--address", "0.0.0.0"]
