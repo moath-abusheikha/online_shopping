@@ -10,7 +10,7 @@ WORKDIR /app/backend
 
 # Clean any local residue and get fresh packages
 RUN rm -rf .dart_frog build
-Run dart pub cache clean
+RUN dart pub cache clean
 RUN dart pub get
 
 # Build the production bundle
