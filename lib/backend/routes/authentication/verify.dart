@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:dart_frog/dart_frog.dart';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 
+// Middleware to verify JWT token
+
 Future<Response> onRequest(RequestContext context) async {
   // Only allow GET requests for verification
   if (context.request.method != HttpMethod.get) {
@@ -17,7 +19,8 @@ Future<Response> onRequest(RequestContext context) async {
 
   try {
     // Secret key should match the one used in Login/Register
-    final jwt = JWT.verify(token, SecretKey('your_shared_secret_key'));
+    final jwtSecret = Platform.environment['JWT_SECRET'] ?? "your_shared_secret_key";
+    final jwt = JWT.verify(token, SecretKey(jwtSecret));
 
     // If verification passes, return 200 OK
     return Response.json(body: {'valid': true, 'userId': jwt.payload['id']});
