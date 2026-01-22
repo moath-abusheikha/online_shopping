@@ -1,6 +1,6 @@
 import 'package:dart_frog/dart_frog.dart';
 import 'package:mongo_dart/mongo_dart.dart';
-import '../../services/auth_service.dart';
+import '../lib/auth_service.dart';
 
 Db? _db;
 

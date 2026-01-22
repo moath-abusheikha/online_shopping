@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:dart_frog/dart_frog.dart';
-import 'package:online_shopping/services/auth_service.dart';
+import '../../lib/auth_service.dart';
 
 Future<Response> onRequest(RequestContext context) async {
   // 1. Only allow POST requests for registration
