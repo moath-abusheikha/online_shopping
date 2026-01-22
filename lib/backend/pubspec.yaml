@@ -1,8 +1,8 @@
 name: market_backend
 description: Dart Frog backend for Online Market
 version: 1.0.0
-environment:
-  sdk: '>=3.0.0 < 4.0.0'
+
+environment:sdk: '>=3.10.0 <4.0.0'
 
 dependencies:
   dart_frog: ^1.2.6

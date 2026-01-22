@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_shopping/repository/auth_repository.dart';
+import '../../repository/auth_repository.dart';
 import 'auth_event.dart';
 import 'auth_state.dart';
 
