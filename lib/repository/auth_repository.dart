@@ -4,7 +4,7 @@ import 'dart:convert';
 
 class AuthRepository {
   // Update this with your actual Render URL (e.g., https://my-market-api.onrender.com)
-  final String baseUrl = "https://your-dart-frog-app.render.com";
+  final String baseUrl = "https://online-market.onrender.com";
 
   // --- Local Storage Logic ---
 
