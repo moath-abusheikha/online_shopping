@@ -2,26 +2,30 @@ FROM dart:stable AS build
 
 WORKDIR /app
 
-# Copy the backend folder specifically
-# Ensure your local path is lib/backend/
-COPY lib/backend/
-RUN ls -R /app/lib/backend/
-# Move into the backend directory
+# 1. Copy the backend folder from your repo into the /app/lib/backend folder in Docker
+COPY lib/backend/ /app/lib/backend/
+
+# 2. Move into that directory
 WORKDIR /app/lib/backend
 
-# Get dependencies for the backend
+# 3. DEBUG: This will show us in the Render logs if pubspec.yaml exists
+RUN ls -la
+
+# 4. Get dependencies for the backend
 RUN dart pub get
 
-# Activate dart_frog and build
+# 5. Build the Dart Frog production server
 RUN dart pub global activate dart_frog_cli
 RUN dart pub global run dart_frog_cli:dart_frog build
 
+# --- Runtime Stage ---
 FROM dart:stable
 WORKDIR /app
 
-# Copy the build output
+# Copy the built output from the build stage
 COPY --from=build /app/lib/backend/build /app/build
 
 EXPOSE 8080
 
+# Start the server
 CMD ["dart", "build/bin/main.dart", "--port", "8080", "--address", "0.0.0.0"]
