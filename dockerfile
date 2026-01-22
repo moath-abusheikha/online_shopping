@@ -4,8 +4,8 @@ WORKDIR /app
 
 # Copy the backend folder specifically
 # Ensure your local path is lib/backend/
-COPY lib/backend/ /app/lib/backend/
-
+COPY lib/backend/
+RUN ls -R /app/lib/backend/
 # Move into the backend directory
 WORKDIR /app/lib/backend
 
