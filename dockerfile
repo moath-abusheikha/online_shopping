@@ -28,4 +28,5 @@ COPY --from=build /app/lib/backend/build /app/build
 EXPOSE 8080
 
 # Start the server
+#Deploy failed for f53facc: fix dockerfile server.dart
 CMD ["dart", "build/bin/server.dart", "--port", "8080", "--address", "0.0.0.0"]
