@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dart_frog/dart_frog.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 import '../lib/auth_service.dart';
@@ -8,7 +10,7 @@ Handler middleware(Handler handler) {
   return (context) async {
     // 1. Connect to MongoDB (Render/Atlas)
     if (_db == null || !_db!.isConnected) {
-      _db = await Db.create("YOUR_MONGODB_ATLAS_CONNECTION_STRING");
+      _db = await Db.create(Platform.environment['MONGODB_URI']!);
       await _db!.open();
     }
 
